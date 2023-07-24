@@ -1,0 +1,36 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+
+set -e
+
+
+# Run lint command and store the output
+LINT_OUTPUT=$(npm run lint)
+
+
+# Check if the lint output contains the warning related to unexpected console statements
+if echo "$LINT_OUTPUT" | grep -q "warning Unexpected console statement no-console"; then
+echo "Lint check failed. Unexpected console statement found. Please fix the issue before committing."
+exit 1
+fi
+
+
+# Run other commands
+npm run nuxi:typecheck
+npm run test:watchfalse
+
+
+# Store the exit code of the npm test command
+TEST_EXIT_CODE=$?
+
+
+# If any command failed, prevent the commit
+if [ $TEST_EXIT_CODE -ne 0 ]; then
+echo "Pre-commit checks failed. Please fix the issues before committing."
+exit 1
+fi
+
+
+# If all commands pass, allow the commit
+exit 0

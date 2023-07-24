@@ -1,0 +1,40 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint:prettier": "prettier --check .",
+    "lint:prettierwrite": "prettier --write .",
+    "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
+    "lint": "npm run lint:js && npm run lint:prettier",
+    "lintfix": "prettier --write --list-different . && npm run lint:js --fix",
+    "test": "vitest",
+    "test:watchfalse": "vitest run",
+    "prepare": "husky install",
+    "nuxi:typecheck": "npx nuxi typecheck"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxt/test-utils": "^3.6.5",
+    "@types/node": "^18.17.0",
+    "@typescript-eslint/eslint-plugin": "^6.1.0",
+    "@typescript-eslint/parser": "^6.1.0",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "@vue/test-utils": "^2.4.1",
+    "eslint": "^8.45.0",
+    "eslint-plugin-no-comments": "^1.1.10",
+    "eslint-plugin-nuxt": "^4.0.0",
+    "eslint-plugin-vitest": "^0.2.6",
+    "eslint-plugin-vue": "^9.15.1",
+    "jsdom": "^22.1.0",
+    "nuxt": "^3.6.5",
+    "prettier": "3.0.0",
+    "vite-plugin-eslint": "^1.8.1",
+    "vitest": "^0.33.0",
+    "husky": "^8.0.0"
+  }
+}
